@@ -29,3 +29,18 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
   }, 100)
 })
+
+
+//Check if user has a web camera
+function success(stream){
+  // The success function receives an argument which points to the webcam stream
+  document.getElementById('myVideo').src = stream; 
+}
+function error(){
+  alert("No webcam detected!");
+}
+if (navigator.getUserMedia) { 
+   navigator.getUserMedia({video:true, audio:false}, success, error);
+} else { 
+   error();
+}
